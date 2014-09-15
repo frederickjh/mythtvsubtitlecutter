@@ -22,3 +22,14 @@ Support for multiple embedded subtitles are supported.</b>"
 
 <h2>Project proposed Workflow</h2>
 That is right this is a project just starting out. Conception starts with the idea.
+
+1. Extract the subtitles using <a href="http://www.mythtv.org/wiki/Mythccextractor">MythCCextractor</a> to .srt files.
+2. Extract cut list from Mythtv database using <a href="http://www.mythtv.org/wiki/Mythutil#--getcutlist"> the --getcutlist option of Mythutil.</a>  
+
+Example:
+$ mythutil --getcutlist --chanid 3001 --starttime 20140913175000 -q
+Cutlist: 2329-3325,5312-6773,10688-11543,12557-13643,14393-15019
+
+The notes in the <a href="http://www.mythtv.org/wiki/MythDVBcut">MythDVDcut script stated that the cutlist that 
+
+

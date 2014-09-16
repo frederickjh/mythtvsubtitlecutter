@@ -52,10 +52,15 @@ The resulting timecode in SRT format would be 00:00:01.400"</b>
 	d. Split the second srt file at the end time
 	e. Adjust timing of subtitles in the srt file from after the cut by the length of the cutlist
 	f. Join the 1st and 3rd srt files together and remove the 2nd with the cut subtitles.
+
 <h3>Possible Tools</h3>	
 The command-line tool <a href="http://karasik.eu.org/software/">'subs' and its perl backend Subtitles.pm</a> provide means for simple loading, re- timing, converting, and storing these subtitle files. Supported formats: .srt, .sub, .smi. 
 Download: <a href="http://karasik.eu.org/software/Subtitles.tar.gz">Subtitles.tar.gz</a>
-	
-	
+
+<h3>Is in possible to reinsert the srt file?</h3>
+
+See this Ffmpeg ticket <a href="https://trac.ffmpeg.org/ticket/2431#comment:24">Detect if subtitle streams do not contain valid utf-8 - Comment 24</a> for invocations that insert srt subtitle files.
+
+<b>ffmpeg -i input.mp4 -sub_charenc ISO8859-1 -i subtitle.srt -map 0:v -map 0:a -c copy -map 1 -c:s:0 mov_text -metadata:s:s:0 language=ger output.mp4</b>
 
 

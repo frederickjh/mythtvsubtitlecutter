@@ -24,12 +24,28 @@ Support for multiple embedded subtitles are supported.</b>"
 That is right this is a project just starting out. Conception starts with the idea.
 
 1. Extract the subtitles using <a href="http://www.mythtv.org/wiki/Mythccextractor">MythCCextractor</a> to .srt files.
-2. Extract cut list from Mythtv database using <a href="http://www.mythtv.org/wiki/Mythutil#--getcutlist"> the --getcutlist option of Mythutil.</a>  
+2. Extract cut list from Mythtv database using the <a href="http://www.mythtv.org/wiki/Mythutil#--getcutlist">--getcutlist option of Mythutil.</a>  
 
 Example:
 $ mythutil --getcutlist --chanid 3001 --starttime 20140913175000 -q
 Cutlist: 2329-3325,5312-6773,10688-11543,12557-13643,14393-15019
 
-The notes in the <a href="http://www.mythtv.org/wiki/MythDVBcut">MythDVDcut script stated that the cutlist that 
+The notes in the <a href="http://www.mythtv.org/wiki/Mythcutprojectx">Mythcutprojectx</a> script stated that the cutlist that Mythutil extracts is a frame-count cutlist. 
+
+.srt files use a hh:mm:ss:mmm format where mmm = milliseconds so conversion maybe needed.
+
+3. Progess each cut pair(start and end times) in the list, cutting the extracted srt subtitle file.
+	a. Determin the start time of the cut in the needed formats
+	b. Determin the end time of the cut in the needed formats
+	c. Determin the length of the cut in the needed formats
+	d. Split the srt file at start time
+	d. Split the second srt file at the end time
+	e. Adjust timing of subtitles in the srt file from after the cut by the length of the cutlist
+	f. Join the 1st and 3rd srt files together and remove the 2nd with the cut subtitles.
+<h3>Possible Tools</h3>	
+The command-line tool <a href="http://karasik.eu.org/software/">'subs' and its perl backend Subtitles.pm</a> provide means for simple loading, re- timing, converting, and storing these subtitle files. Supported formats: .srt, .sub, .smi. 
+Download: <a href="http://karasik.eu.org/software/Subtitles.tar.gz">Subtitles.tar.gz</a>
+	
+	
 
 

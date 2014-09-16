@@ -30,7 +30,17 @@ Example:
 $ mythutil --getcutlist --chanid 3001 --starttime 20140913175000 -q
 Cutlist: 2329-3325,5312-6773,10688-11543,12557-13643,14393-15019
 
-The notes in the <a href="http://www.mythtv.org/wiki/Mythcutprojectx">Mythcutprojectx</a> script stated that the cutlist that Mythutil extracts is a frame-count cutlist. 
+The notes in the <a href="http://www.mythtv.org/wiki/Mythcutprojectx">Mythcutprojectx</a> script stated that the cutlist that Mythutil extracts is a frame-count cutlist. See this blog post <a href="http://videosubtitles.wordpress.com/tag/convert-frames-to-milliseconds/">"SubRip (.srt) subtitle format" in the section "What else should I know?"</a> for more information about converting. Conversion is based on the number of frames per second (fps), so we will need to gather that information as well.
+
+<b>"(frames * 1000) / fps
+
+i.e. take the frame number and multiple it by 1000, then divide the result by your video’s frame rate (fps).
+
+e.g. to convert a 30fps timecode (00:00:01:12) in to milliseconds:
+(12 frames * 1000) / 30fps = 400 milliseconds
+The resulting timecode in SRT format would be 00:00:01.400"</b>
+
+
 
 .srt files use a hh:mm:ss:mmm format where mmm = milliseconds so conversion maybe needed.
 
